@@ -159,12 +159,6 @@ static const Layout layouts[] = {
 static Key keys[] = {
     /* modifier                         key         function        argument */
 
-    // brightness and audio 
-    {0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol}},
-	{0,                       XF86XK_AudioMute, spawn, {.v = mutevol }},
-	{0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol}},
-	{0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up}},
-	{0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down}},
 
     // screenshot fullscreen and cropped
      { MODKEY,             			XK_d,      spawn,          SHCMD("rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi") },
@@ -184,6 +178,10 @@ static Key keys[] = {
 	{ MODKEY|ALTKEY,             	XK_w,      spawn,      	   SHCMD("feh --randomize --bg-scale ~/.wallpapers/everforest") },
 	{ ALTKEY,                       XK_b,      togglebar,      {0} },
     // { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("amixer set Master toggle") },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("amixer set Master 5%-") },
+	{ MODKEY,                       XK_n,      spawn,          SHCMD("amixer set Master 5%+") },
+
     // toggle stuff
     { MODKEY|ControlMask,               XK_t,       togglegaps,     {0} },
     { MODKEY|ShiftMask,                 XK_space,   togglefloating, {0} },

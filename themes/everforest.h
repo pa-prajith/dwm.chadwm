@@ -10,3 +10,8 @@ static const char orange[]      = "#E69875";
 static const char yellow[]      = "#DBBC7F";
 static const char pink[]        = "#D699B6";
 static const char col_borderbar[]  = "#232A2E"; // inner border
+
+
+static const char norm_bg[] = "#232A2E";
+static const char sel_bg[] = "#A7C080";
+static const char norm_fg[] = "#D3C6AA";

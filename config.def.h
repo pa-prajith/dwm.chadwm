@@ -36,24 +36,12 @@ static const int new_window_attach_on_end = 0; /*  1 means the new window will a
 #define ICONSIZE 19   /* icon size */
 #define ICONSPACING 8 /* space between icon and title */
 
+// theme
+#include "themes/everforest.h"
+
 static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:size=11", "Hack Bold Nerd Font:size=11" };
-
-
-
 #define ALTKEY Mod1Mask
 static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:size=17";
-static const char norm_fg[] = "#D3C6AA";
-static const char norm_bg[] = "#232A2E";
-static const char norm_border[] = "#232A2E";
-static const char unsel_border[] = "#232A2E";
-
-static const char sel_fg[] = "#A7C080";
-static const char sel_bg[] = "#A7C080";
-static const char sel_fg1[] = "#A7C080";
-static const char sel_bg1[] = "#232A2E";
-static const char sel_border[] = "#24283b";
-static const char dsel_bg[] = "#232A2E";
-static const char for_border[] = "#A7C080";
 
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bg, "-nf", sel_bg, "-sb", norm_bg, "-sf", norm_fg, NULL };
@@ -61,8 +49,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-// theme
-#include "themes/everforest.h"
+
 
 static const char *colors[][3]      = {
     /*                     fg       bg      border */
@@ -163,10 +150,10 @@ static Key keys[] = {
     // screenshot fullscreen and cropped
      { MODKEY,             			XK_d,      spawn,          SHCMD("rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi") },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
+	{ ALTKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
-	{ ALTKEY,             			XK_Return, spawn,          SHCMD("kitty") },
-	{ ALTKEY|ShiftMask,             XK_Return, spawn,          SHCMD("alacritty") },
+	{ MODKEY,             			XK_Return, spawn,          SHCMD("kitty") },
+	{ ALTKEY,                       XK_Return, spawn,          SHCMD("alacritty") },
 	{ MODKEY,             			XK_b,      spawn,      	   SHCMD("firefox") },
 	{ MODKEY,             			XK_e,      spawn,      	   SHCMD("thunar") },
 	{ MODKEY|ALTKEY,             	XK_e,      spawn,      	   SHCMD("externalmonitor") },
